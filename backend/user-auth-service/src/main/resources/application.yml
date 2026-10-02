@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: user-auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/soa_user_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+security:
+  jwt:
+    secret: ${JWT_SECRET:change-this-development-secret-to-a-long-random-value-123456789}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
