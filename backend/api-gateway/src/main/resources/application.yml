@@ -18,6 +18,11 @@ spring:
           predicates:
             - Path=/api/auth/**
 
+        - id: incident-management-service
+          uri: lb://incident-management-service
+          predicates:
+            - Path=/api/incidents/**
+
 eureka:
   client:
     service-url:
